@@ -1,3 +1,5 @@
+[Back to Portfolio](https://mwangechi.github.io/Mwangechi-portfolio/)
+
 # Star Schema Data Warehouse for Logistics
 
 A dimensional data warehouse built with [dbt](https://www.getdbt.com/) that transforms raw logistics data into a clean star schema optimized for analytics. Designed to run against BigQuery in production and DuckDB locally.
