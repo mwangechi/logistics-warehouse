@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: fct_shipments
+    description: >
+      Fact table containing shipment transactions with all measures
+      and foreign keys to dimension tables.
+    columns:
+      - name: shipment_key
+        description: Surrogate key for the shipment
+        tests:
+          - unique
+          - not_null
+      - name: supplier_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_suppliers')
+              field: supplier_key
+      - name: product_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: product_key
+      - name: warehouse_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_warehouses')
+              field: warehouse_key
+
+  - name: dim_suppliers
+    description: Supplier dimension with tier classification
+    columns:
+      - name: supplier_key
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: Product dimension with categories and physical attributes
+    columns:
+      - name: product_key
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_warehouses
+    description: Warehouse dimension with location and inventory capacity
+    columns:
+      - name: warehouse_key
+        tests:
+          - unique
+          - not_null

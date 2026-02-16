@@ -1,0 +1,11 @@
+product_id,product_name,category,subcategory,warehouse_id,quantity_on_hand,reorder_point,unit_cost,weight_kg,is_hazardous
+PRD001,Industrial Bearings,Machinery,Components,WH001,2500,500,10.20,0.35,false
+PRD002,Cotton Thread Spools,Textiles,Raw Materials,WH002,15000,3000,2.80,0.12,false
+PRD003,Lithium Battery Cells,Electronics,Power,WH001,800,200,38.50,0.45,true
+PRD004,Cardboard Boxes (Medium),Packaging,Containers,WH003,9000,2000,6.40,0.80,false
+PRD005,Plastic Pellets (HDPE),Plastics,Raw Materials,WH002,25000,5000,1.10,0.05,false
+PRD006,Specialty Coffee Beans,Food & Beverage,Beverages,WH001,1200,300,18.00,1.00,false
+PRD007,Steel Fasteners Assorted,Machinery,Hardware,WH005,6000,1500,5.20,0.08,false
+PRD008,Medical Grade Tubing,Healthcare,Supplies,WH004,500,100,78.00,0.25,false
+PRD009,Organic Fertilizer,Agriculture,Chemicals,WH005,3000,800,14.50,25.00,false
+PRD010,Automotive Brake Pads,Automotive,Parts,WH002,1800,400,26.00,1.20,false

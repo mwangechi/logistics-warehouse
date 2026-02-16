@@ -1,0 +1,50 @@
+name: "logistics_warehouse"
+version: "1.0.0"
+config-version: 2
+
+profile: "logistics_warehouse"
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  logistics_warehouse:
+    +schema: raw
+    raw_shipments:
+      +column_types:
+        shipment_id: varchar(20)
+        order_date: date
+        ship_date: date
+        delivery_date: date
+        quantity: integer
+        unit_price: decimal(10,2)
+        shipping_cost: decimal(10,2)
+    raw_inventory:
+      +column_types:
+        product_id: varchar(20)
+        reorder_point: integer
+        quantity_on_hand: integer
+        unit_cost: decimal(10,2)
+    raw_suppliers:
+      +column_types:
+        supplier_id: varchar(20)
+        lead_time_days: integer
+        reliability_score: decimal(3,2)
+
+models:
+  logistics_warehouse:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      +materialized: table
+      +schema: analytics

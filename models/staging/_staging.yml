@@ -1,0 +1,70 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw logistics data loaded via dbt seed
+    schema: raw
+    tables:
+      - name: raw_shipments
+        description: Raw shipment transaction records
+        columns:
+          - name: shipment_id
+            description: Unique identifier for each shipment
+            tests:
+              - unique
+              - not_null
+          - name: supplier_id
+            tests:
+              - not_null
+          - name: product_id
+            tests:
+              - not_null
+          - name: quantity
+            tests:
+              - not_null
+
+      - name: raw_inventory
+        description: Current inventory levels by product and warehouse
+        columns:
+          - name: product_id
+            description: Unique product identifier
+            tests:
+              - unique
+              - not_null
+
+      - name: raw_suppliers
+        description: Supplier master data
+        columns:
+          - name: supplier_id
+            description: Unique supplier identifier
+            tests:
+              - unique
+              - not_null
+
+models:
+  - name: stg_shipments
+    description: Cleaned shipment records with consistent types and naming
+    columns:
+      - name: shipment_id
+        tests:
+          - unique
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+
+  - name: stg_inventory
+    description: Cleaned inventory snapshot with standardized columns
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_suppliers
+    description: Cleaned supplier master data
+    columns:
+      - name: supplier_id
+        tests:
+          - unique
+          - not_null

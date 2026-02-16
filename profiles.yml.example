@@ -1,0 +1,22 @@
+# Copy this file to profiles.yml and edit for your environment.
+# Do NOT commit profiles.yml — it contains credentials.
+
+logistics_warehouse:
+  target: dev
+
+  outputs:
+    # Local development with DuckDB (no cloud credentials needed)
+    dev:
+      type: duckdb
+      path: "target/logistics.duckdb"
+      threads: 4
+
+    # Production with BigQuery
+    prod:
+      type: bigquery
+      method: service-account
+      project: your-gcp-project-id
+      dataset: logistics_analytics
+      threads: 8
+      keyfile: /path/to/service-account.json
+      location: US

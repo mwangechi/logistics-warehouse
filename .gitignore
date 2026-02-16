@@ -1,0 +1,19 @@
+# Environment
+*.pyc
+__pycache__/
+venv/
+.venv/
+
+# dbt
+target/
+dbt_packages/
+logs/
+profiles.yml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
